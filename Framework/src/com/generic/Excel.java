@@ -1,9 +1,20 @@
 package com.generic;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.google.common.collect.Table.Cell;
 
 public class Excel {
 	public static int getRow(String path, String sheet) {
@@ -45,6 +56,26 @@ public class Excel {
 			e.printStackTrace();
 		}
 		return value;
+	}
+	public static void createFile(String path,String sheetName) throws EncryptedDocumentException, InvalidFormatException, FileNotFoundException, IOException {
+		Workbook w = WorkbookFactory.create(new FileInputStream(path));
+		 Sheet sh = w.createSheet(sheetName);
+		 sh.createRow(0).createCell(0).setCellValue("Name");
+		 sh.getRow(0).createCell(1).setCellValue("Status");
+		 FileOutputStream fos = new FileOutputStream(path);
+		 w.write(fos);
+		 fos.close();
+		 w.close();
+	}
+	public static void report(String name, String path, String sheet_name, int row, int col, int testcasestatus) throws IOException, EncryptedDocumentException, InvalidFormatException {
+		Workbook w = WorkbookFactory.create(new FileInputStream(path));
+		Sheet sh = w.getSheet(sheet_name);
+		sh.createRow(row).createCell(col).setCellValue(name);
+		col++;
+		sh.getRow(row).createCell(col).setCellValue(testcasestatus);
+		FileOutputStream fio = new FileOutputStream(path);
+		w.write(fio);
+		w.close();
 		
 	}
 }

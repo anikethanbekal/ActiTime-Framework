@@ -10,11 +10,10 @@ import org.openqa.selenium.WebDriver;
 import com.google.common.io.Files;
 
 public class CaptureScreenshot {
-	public static void getScreenshot(WebDriver driver, String name) throws IOException
-	{
-		TakesScreenshot ts = (TakesScreenshot)driver;
-		File from= ts.getScreenshotAs(OutputType.FILE);
-		File to= new File("./Screenshot/"+name+".png");
+	public static void getScreenshot(WebDriver driver, String name) throws IOException {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File from = ts.getScreenshotAs(OutputType.FILE);
+		File to = new File("./Screenshot/" + name + ".png");
 		Files.copy(from, to);
 	}
 }

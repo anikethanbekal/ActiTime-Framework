@@ -27,13 +27,4 @@ public class LoginPage {
 	public void setLoginBtn() {
 		loginBtn.click();
 	}
-	
-	@FindBy(id="keepLoggedInCheckBox") private WebElement pwdCb;
-	public WebElement getRemeberPasswordCB() {
-		return pwdCb;
-	}
-
-	public void setRemeberPasswordCB() {
-		 pwdCb.click();
-	}
 }

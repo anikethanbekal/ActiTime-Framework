@@ -9,7 +9,7 @@ import org.testng.Reporter;
 
 import com.generic.IAutoConst;
 
-public class EnterTimeTrack implements IAutoConst{
+public class EnterTimeTrack{
 	public EnterTimeTrack(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
@@ -17,10 +17,10 @@ public class EnterTimeTrack implements IAutoConst{
 		try {
 			WebDriverWait ww = new WebDriverWait(driver, ETO);
 			ww.until(ExpectedConditions.titleContains(title));
-			Reporter.log("Home Page is Displayed");
+			Reporter.log("Home Page is Displayed",true);
 		}
 		catch (Exception e) {
-			Reporter.log("Home Page is not displayed");
+			Reporter.log("Home Page is not displayed",true);
 			e.printStackTrace();
 			Assert.fail();
 		}
