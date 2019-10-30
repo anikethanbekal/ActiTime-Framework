@@ -39,4 +39,4 @@ public class ActiTimeTest extends BaseTest{
 		et.verifyHomePage(driver, 5, title);
 	}
 
-}
+} 

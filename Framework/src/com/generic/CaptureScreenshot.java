@@ -17,3 +17,4 @@ public class CaptureScreenshot {
 		Files.copy(from, to);
 	}
 }
+ 

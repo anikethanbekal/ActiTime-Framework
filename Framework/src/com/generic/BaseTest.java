@@ -25,7 +25,7 @@ public class BaseTest implements IAutoConst{
 	static int row =1;
 	static int col = 0;
 	
-	static {
+	static { 
 		try {
 		fis = new FileInputStream(CONFIG_PATH);
 		con = new Properties();
